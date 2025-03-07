@@ -16,13 +16,15 @@ const CURRENCIES = [
 ];
 
 const COMMON_MEASURES = [
-  { oz: 0.25, ml: 7.5, description: '1/4 oz - Dash/Golpe' },
-  { oz: 0.5, ml: 15, description: '1/2 oz - Media medida' },
-  { oz: 1, ml: 30, description: '1 oz - Una medida' },
-  { oz: 1.5, ml: 45, description: '1.5 oz - Medida y media' },
-  { oz: 2, ml: 60, description: '2 oz - Medida doble (estándar para destilados)' },
-  { oz: 3, ml: 90, description: '3 oz - Triple medida' },
-  { oz: 4, ml: 120, description: '4 oz - Cuádruple (común para mixers)' },
+  { oz: 0.25, ml: 7.5, description: "1/4 oz - Dash/Golpe" },
+  { oz: 0.5, ml: 15, description: "1/2 oz - Media medida" },
+  { oz: 1, ml: 30, description: "1 oz - Una medida" },
+  { oz: 1.5, ml: 45, description: "1.5 oz - Medida y media" },
+  { oz: 2, ml: 60, description: "2 oz - Medida doble (estándar para destilados)" },
+  { oz: 3, ml: 90, description: "3 oz - Triple medida" },
+  { oz: 4, ml: 120, description: "4 oz - Cuádruple (común para mixers)" },
+  { oz: 5, ml: 150, description: "5 oz - Cinco medidas" },
+  { oz: 6, ml: 180, description: "6 oz - Seis medidas" },
 ];
 
 function App() {
@@ -191,7 +193,8 @@ function App() {
                       <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
                     </div>
                   </div>
-                  <div className="col-span-2">
+                  
+                  <div className="col-span-2 flex items-center gap-2">
                     <select
                       value={ing.recipeAmount}
                       onChange={(e) => updateIngredient(index, 'recipeAmount', e.target.value)}
@@ -203,7 +206,9 @@ function App() {
                         </option>
                       ))}
                     </select>
+                    <span className="text-xs">{ing.recipeAmount * 30} ml</span>
                   </div>
+                  
                   <div className="col-span-2">
                     <div className="relative">
                       <input
