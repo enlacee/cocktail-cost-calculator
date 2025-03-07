@@ -20,3 +20,11 @@ The easier and fast calculator for bartender man
 
 - node 18 to 20
 - npm
+
+
+**For production**
+
+    cd app-frontend
+    npm run build
+    cd ..
+    cp -r ./app-frontend/dist/* ./docs/.
