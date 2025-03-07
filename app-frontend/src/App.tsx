@@ -81,11 +81,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-3">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-1">
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6">
         <div className="flex items-center gap-3 mb-6">
           <Calculator className="w-8 h-8 text-blue-600" />
-          <h1 className="text-2xl font-bold text-gray-800">Calculadora Universal de Costos de Cocteles</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Calculadora de Costos de Cocteles</h1>
         </div>
 
         <div className="space-y-6">
@@ -259,7 +259,7 @@ function App() {
 
           <div className="bg-blue-50 p-4 rounded-lg space-y-2">
             <div className="flex justify-between items-center">
-              <span className="font-medium">Costo Total de {cocktailName}:</span>
+              <span className="font-medium">Costo Total de <b>{cocktailName}</b>:</span>
               <span className="text-lg">{currency.symbol}{calculateTotalCost().toFixed(2)} {currency.code}</span>
             </div>
             <div className="flex justify-between items-center text-blue-700">
@@ -269,6 +269,21 @@ function App() {
           </div>
         </div>
       </div>
+
+      <footer className="mt-8 text-center text-gray-600 text-sm">
+  Creado por 
+  <a href="https://anibalcopitan.com" className="text-blue-600 hover:underline mx-1">
+    Anibal Copitan
+  </a> 
+  |  
+  <a 
+    href="https://wa.me/51970142637?text=Hola%20Anibal,%20quiero%20saber%20más%20sobre%20tu%20proyecto!" 
+    className="text-green-600 hover:underline mx-1"
+  >
+    Contactar por WhatsApp
+  </a> 
+  | © {new Date().getFullYear()}
+</footer>
     </div>
   );
 }
