@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calculator, Plus, Trash2, Info } from 'lucide-react';
+import InstructionModal from "./components/InstructionModal";
 
 interface Ingredient {
   name: string;
@@ -82,6 +83,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-1">
+      <InstructionModal />
+
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6">
         <div className="flex items-center gap-3 mb-6">
           <Calculator className="w-8 h-8 text-blue-600" />
@@ -188,7 +191,7 @@ function App() {
                         />
                       </td>
                       <td className="p-2">
-                        <div className="relative">
+                        <div className="relative_">
                           <input
                             type="number"
                             value={ing.price}
@@ -218,7 +221,7 @@ function App() {
                       </td>
                       
                       <td className="p-2">
-                        <div className="relative">
+                        <div className="relative_">
                           <input
                             type="number"
                             value={ing.recipeCost.toFixed(2)}
