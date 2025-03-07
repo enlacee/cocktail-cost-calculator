@@ -81,7 +81,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-3">
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6">
         <div className="flex items-center gap-3 mb-6">
           <Calculator className="w-8 h-8 text-blue-600" />
@@ -131,7 +131,7 @@ function App() {
                 className="flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
               >
                 <Plus size={16} />
-                Agregar Ingrediente
+                Agregar
               </button>
             </div>
 
@@ -149,88 +149,98 @@ function App() {
               </div>
             )}
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-12 gap-4 items-center font-semibold text-sm text-gray-600 pb-2 border-b">
-                <div className="col-span-3">Producto</div>
-                <div className="col-span-2">ML (Botella)</div>
-                <div className="col-span-2">Precio</div>
-                <div className="col-span-2">Receta (oz)</div>
-                <div className="col-span-2">Costo</div>
-                <div className="col-span-1"></div>
-              </div>
-              {ingredients.map((ing, index) => (
-                <div key={index} className="grid grid-cols-12 gap-4 items-center">
-                  <div className="col-span-3">
-                    <input
-                      type="text"
-                      value={ing.name}
-                      onChange={(e) => updateIngredient(index, 'name', e.target.value)}
-                      placeholder="Nombre del producto"
-                      className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    <input
-                      type="number"
-                      value={ing.totalVolume}
-                      onChange={(e) => updateIngredient(index, 'totalVolume', e.target.value)}
-                      placeholder="ML total"
-                      className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
-                      min="0"
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    <div className="relative">
-                      <input
-                        type="number"
-                        value={ing.price}
-                        onChange={(e) => updateIngredient(index, 'price', e.target.value)}
-                        placeholder="Precio"
-                        className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
-                        min="0"
-                        step="0.01"
-                      />
-                      <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="col-span-2 flex items-center gap-2">
-                    <select
-                      value={ing.recipeAmount}
-                      onChange={(e) => updateIngredient(index, 'recipeAmount', e.target.value)}
-                      className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
-                    >
-                      {COMMON_MEASURES.map((measure, i) => (
-                        <option key={i} value={measure.oz}>
-                          {measure.description}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="text-xs">{ing.recipeAmount * 30} ml</span>
-                  </div>
-                  
-                  <div className="col-span-2">
-                    <div className="relative">
-                      <input
-                        type="number"
-                        value={ing.recipeCost.toFixed(2)}
-                        readOnly
-                        className="w-full p-2 bg-gray-100 border rounded outline-none"
-                      />
-                      <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
-                    </div>
-                  </div>
-                  <div className="col-span-1 flex justify-center">
-                    <button
-                      onClick={() => removeIngredient(index)}
-                      className="text-red-500 hover:text-red-700 transition-colors"
-                      disabled={ingredients.length === 1}
-                    >
-                      <Trash2 size={20} />
-                    </button>
-                  </div>
-                </div>
-              ))}
+
+            {/* <!-- Contenedor con Scroll Horizontal --> */}
+            {/* <div className="w-full overflow-x-auto space-y-4"> */}
+            {/* <div className="max-w-[800px] overflow-x-auto space-y-4"> */}
+            <div className="w-full overflow-x-auto space-y-4">
+              <table className="w-full min-w-[800px]">
+                <thead>
+                  <tr className=" font-semibold text-sm text-gray-600 pb-2">
+                    <th className="p-2 border-b">Producto</th>
+                    <th className="p-2 border-b">ML (Botella)</th>
+                    <th className="p-2 border-b">Precio</th>
+                    <th className="p-2 border-b">Receta (oz)</th>
+                    <th className="p-2 border-b">Costo</th>
+                    <th className="p-2 border-b"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ingredients.map((ing, index) => (
+                    <tr key={index} className="">
+                      <td className="p-2">
+                        <input
+                          type="text"
+                          value={ing.name}
+                          onChange={(e) => updateIngredient(index, 'name', e.target.value)}
+                          placeholder="Nombre del producto"
+                          className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
+                        />
+                      </td>
+                      <td className="p-2">
+                        <input
+                          type="number"
+                          value={ing.totalVolume}
+                          onChange={(e) => updateIngredient(index, 'totalVolume', e.target.value)}
+                          placeholder="ML total"
+                          className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
+                          min="0"
+                        />
+                      </td>
+                      <td className="p-2">
+                        <div className="relative">
+                          <input
+                            type="number"
+                            value={ing.price}
+                            onChange={(e) => updateIngredient(index, 'price', e.target.value)}
+                            placeholder="Precio"
+                            className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
+                            min="0"
+                            step="0.01"
+                          />
+                          <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
+                        </div>
+                      </td>
+                      
+                      <td className="p-2 flex items-center gap-2">
+                        <select
+                          value={ing.recipeAmount}
+                          onChange={(e) => updateIngredient(index, 'recipeAmount', e.target.value)}
+                          className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300 outline-none"
+                        >
+                          {COMMON_MEASURES.map((measure, i) => (
+                            <option key={i} value={measure.oz}>
+                              {measure.description}
+                            </option>
+                          ))}
+                        </select>
+                        <span className="text-xs">{ing.recipeAmount * 30} ml</span>
+                      </td>
+                      
+                      <td className="p-2">
+                        <div className="relative">
+                          <input
+                            type="number"
+                            value={ing.recipeCost.toFixed(2)}
+                            readOnly
+                            className="w-full p-2 bg-gray-100 border rounded outline-none"
+                          />
+                          <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
+                        </div>
+                      </td>
+                      <td className="p-2 flex justify-center">
+                        <button
+                          onClick={() => removeIngredient(index)}
+                          className="text-red-500 hover:text-red-700 transition-colors"
+                          disabled={ingredients.length === 1}
+                        >
+                          <Trash2 size={20} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
