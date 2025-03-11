@@ -11,6 +11,8 @@ The easier and fast calculator for bartender man
 
 ![app v1](./README/images/app-v1.png)
 
+![banner v1](./README/images/baner-calculadora-de-costos-de-cocteles.png)
+
 **Requirements**
 
 - node 18 to 20
