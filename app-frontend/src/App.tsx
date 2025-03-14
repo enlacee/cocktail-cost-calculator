@@ -194,7 +194,7 @@ function App() {
                         />
                       </td>
                       <td className="p-2">
-                        <div className="relative_">
+                        <div className="relative">
                           <input
                             type="number"
                             value={ing.price}
@@ -224,14 +224,14 @@ function App() {
                       </td>
                       
                       <td className="p-2">
-                        <div className="relative_">
+                        <div className="relative">
                           <input
                             type="number"
                             value={ing.recipeCost.toFixed(2)}
                             readOnly
                             className="w-full p-2 bg-gray-100 border rounded outline-none"
                           />
-                          <span className="absolute_ right-3 top-2 text-gray-500">{currency.symbol}</span>
+                          <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
                         </div>
                       </td>
                       <td className="p-2 flex justify-center">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
 const InstructionModal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,8 +32,8 @@ const InstructionModal = () => {
     setShowModal(false);
     localStorage.setItem("seenVideo", "true");
   };
-
-  return (
+  
+  const modalContent = (
     <>
       {/* Modal de Pregunta */}
       {showModal && (
@@ -60,7 +61,7 @@ const InstructionModal = () => {
 
       {/* Modal del Video */}
       {showVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
           <div className="relative w-3/4 max-w-2xl">
             <button
               onClick={handleClose}
@@ -79,6 +80,8 @@ const InstructionModal = () => {
       )}
     </>
   );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 };
 
 export default InstructionModal;
