@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Calculator, Plus, Trash2, Info } from 'lucide-react';
 import InstructionModal from "./components/InstructionModal";
+import WhatsAppButton from "./components/WhatsAppButton";
+
 
 interface Ingredient {
   name: string;
@@ -84,6 +86,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-1">
       <InstructionModal />
+      <WhatsAppButton phone="51970142637" message="¡Hola! Tengo una consulta" />
 
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6">
         <div className="flex items-center gap-3 mb-6">
@@ -228,7 +231,7 @@ function App() {
                             readOnly
                             className="w-full p-2 bg-gray-100 border rounded outline-none"
                           />
-                          <span className="absolute right-3 top-2 text-gray-500">{currency.symbol}</span>
+                          <span className="absolute_ right-3 top-2 text-gray-500">{currency.symbol}</span>
                         </div>
                       </td>
                       <td className="p-2 flex justify-center">
@@ -247,7 +250,7 @@ function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
+          {/* <div className="grid grid-cols-1 gap-6">
             <div>
               <label className="block text-sm text-gray-600 mb-1">Porcentaje de Ganancia (%)</label>
               <input
@@ -258,17 +261,17 @@ function App() {
                 min="0"
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="bg-blue-50 p-4 rounded-lg space-y-2">
             <div className="flex justify-between items-center">
               <span className="font-medium">Costo Total de <b>{cocktailName}</b>:</span>
               <span className="text-lg">{currency.symbol}{calculateTotalCost().toFixed(2)} {currency.code}</span>
             </div>
-            <div className="flex justify-between items-center text-blue-700">
+            {/* <div className="flex justify-between items-center text-blue-700">
               <span className="font-medium">Precio de Venta Sugerido:</span>
               <span className="text-xl font-bold">{currency.symbol}{calculateFinalPrice().toFixed(2)} {currency.code}</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
